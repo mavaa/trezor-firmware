@@ -20,14 +20,6 @@ class LoaderDefault:
         icon_fg_color: int | None = ui.WHITE
 
 
-class LoaderNeutral(LoaderDefault):
-    class normal(LoaderDefault.normal):
-        fg_color = ui.FG
-
-    class active(LoaderDefault.active):
-        fg_color = ui.FG
-
-
 if TYPE_CHECKING:
     LoaderStyleType = type[LoaderDefault]
 
@@ -37,6 +29,7 @@ _OFFSET_Y = const(-24)
 _REVERSE_SPEEDUP = const(2)
 
 
+# TODO: probably should be removed - replace it with Rust loader
 class Loader(ui.Component):
     def __init__(
         self,

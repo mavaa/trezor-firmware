@@ -253,10 +253,6 @@ async def confirm_blob(
         raise wire.ActionCancelled
 
 
-def draw_simple_text(title: str, description: str = "") -> None:
-    log.error(__name__, "draw_simple_text not implemented")
-
-
 async def request_pin_on_device(
     ctx: wire.GenericContext,
     prompt: str,

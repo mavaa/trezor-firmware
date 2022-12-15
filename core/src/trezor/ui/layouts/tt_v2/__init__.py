@@ -646,7 +646,7 @@ async def _confirm_ask_pagination(
             paginated.request_complete_repaint()
 
         result = await interact(ctx, paginated, br_type, br_code)
-        assert result in (trezorui2.CONFIRMED, trezorui2.CANCELLED)
+        assert result in (CONFIRMED, CANCELLED)
 
     assert False
 
@@ -981,16 +981,6 @@ async def confirm_coinjoin(
     )
 
 
-def show_coinjoin() -> None:
-    draw_simple(
-        trezorui2.show_info(
-            title="CoinJoin in progress.",
-            description="Do not disconnect your Trezor.",
-            button="",
-        )
-    )
-
-
 # TODO cleanup @ redesign
 async def confirm_sign_identity(
     ctx: GenericContext, proto: str, identity: str, challenge_visual: str | None
@@ -1051,10 +1041,6 @@ async def show_popup(
             time_ms=timeout_ms,
         )
     )
-
-
-def draw_simple_text(title: str, description: str = "") -> None:
-    log.error(__name__, "draw_simple_text not implemented")
 
 
 def request_passphrase_on_host() -> None:
