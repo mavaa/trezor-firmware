@@ -6,7 +6,6 @@ from trezor.utils import DISABLE_ANIMATION
 
 import trezorui2
 
-from ...components.common.confirm import is_confirmed
 from ..common import button_request, interact
 
 if TYPE_CHECKING:
@@ -17,6 +16,10 @@ if TYPE_CHECKING:
 
 if __debug__:
     trezorui2.disable_animation(bool(DISABLE_ANIMATION))
+
+
+def is_confirmed(x: Any) -> bool:
+    return x is trezorui2.CONFIRMED
 
 
 class RustLayout(ui.Layout):

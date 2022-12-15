@@ -545,9 +545,7 @@ async def confirm_payment_request(
     recipient_name: str,
     amount: str,
     memos: list[str],
-) -> Any:
-    from ...components.common import confirm
-
+) -> bool:
     result = await interact(
         ctx,
         RustLayout(
@@ -562,10 +560,13 @@ async def confirm_payment_request(
         "confirm_payment_request",
         ButtonRequestType.ConfirmOutput,
     )
+
+    # When user pressed INFO, returning False, which gets processed in higher function
+    # to differentiate it from CONFIRMED. Raising otherwise.
     if result is CONFIRMED:
-        return confirm.CONFIRMED
+        return True
     elif result is INFO:
-        return confirm.INFO
+        return False
     else:
         raise ActionCancelled
 
