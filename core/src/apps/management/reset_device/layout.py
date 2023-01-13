@@ -208,7 +208,7 @@ async def slip39_basic_show_and_confirm_shares(
             await show_share_words(ctx, share_words, index)
 
             # make the user confirm words from the share
-            if await _share_words_confirmed(ctx, index, share_words):
+            if await _share_words_confirmed(ctx, index, share_words, len(shares)):
                 break  # this share is confirmed, go to next one
 
 
